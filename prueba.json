@@ -1,0 +1,19 @@
+[
+  {
+    "title":"ok",
+    "imgurl":"imagen1.jpg",
+    "content":"This is our best sushi, you really need to try and fall in love with this."
+  },
+  
+  {
+    "title":"This soup! Our best soup",
+    "imgurl":"imagen2.jpg",
+    "content":"This soup is amazing, and actually I hate ramen but this one stole my heart"
+  },
+
+  {
+    "title":"Our buffet",
+    "imgurl":"imagen3.jpg",
+    "content":"If you come here on sunday you can take advange of our buffet, because you can literally eat whatever you want."
+  }
+]
