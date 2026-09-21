@@ -1,0 +1,19 @@
+[
+  {
+    "title":"Beans",
+    "imgurl":"frijoles.jpg",
+    "content":"This is a colombian food and to be honest, is my favorite!!"
+  },
+  
+  {
+    "title":"Hot cakes",
+    "imgurl":"hotcakes.jpeg",
+    "content":"These hotcakes are perfect for the breakfast, I swear!"
+  },
+
+  {
+    "title":"Pan",
+    "imgurl":"pan.jpeg",
+    "content":"And obviusly, here you are our emblematic breakfast!"
+  }
+]
