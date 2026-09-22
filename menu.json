@@ -4,15 +4,15 @@
     },
 
     {
-       "first": "Pasta with sauce and cheese",
+       "first": "Pasta with tomato sauce and cheese",
        "second": "Chocolate cake",
-       "third": "Burguer",
+       "third": "Burger",
        "fourth": "Pepperoni pizza",
        "fifth": "Rice with eggs",
-       "sixth": "Chicken rice",
+       "sixth": "Chicken and rice",
        "seventh": "Milkshake",
-       "eighth": "Beans with rice and eggs",
-       "nineth": "Fika",
+       "eighth": "Beans, rice and eggs",
+       "ninth": "Fika",
        "tenth": "Cookies"
     },
 

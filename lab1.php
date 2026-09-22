@@ -94,7 +94,7 @@
                                 <li><?php echo $list[1]["sixth"]; ?></li>
                                 <li><?php echo $list[1]["seventh"]; ?></li>
                                 <li><?php echo $list[1]["eighth"]; ?></li>
-                                <li><?php echo $list[1]["nineth"]; ?></li>
+                                <li><?php echo $list[1]["ninth"]; ?></li>
                                 <li><?php echo $list[1]["tenth"]; ?></li>
                             </ul>
                             <hr>
