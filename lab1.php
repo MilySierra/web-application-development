@@ -2,6 +2,7 @@
     <html>
         <?php
             session_start();
+            require "db.php";
             if (!isset($_SESSION["loggedIn"])){
                 header("Location: login.php");
                 exit;
@@ -30,9 +31,43 @@
                     <a href="<?php echo $material[0]["hrl"]; ?>">Link 5</a>
                     <a href="<?php echo $material[0]["hrl"]; ?>">Link 6</a>
                     <a href="<?php echo $material[0]["hrl"]; ?>">Link 7</a>
-                    <input type="text" placeholder="Search">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search" id="search">
+                    </div>
                     <img src="img/<?php echo $images[3]["imgurl"];?>">
                 </nav>
+                <script>
+                    const search = document.querySelector("#search");
+                    search.addEventListener("input", async function() {
+                        const oldResults = document.querySelector(".search-complete");
+                        if (oldResults) oldResults.remove();
+                        const response = await fetch("search.php?new=" + search.value);
+                        const data = await response.json(); 
+                        const results = document.createElement("div");
+                        results.className = "search-complete"
+
+                        results.style.position = "absolute";
+                        results.style.backgroundColor = "white";
+                        results.style.color = "black";
+                        results.style.zIndex = "999999";
+                        results.style.width = "200px";
+                        results.style.height = "100px";
+
+                        data.forEach(function(news) {
+                            const div = document.createElement("div");
+                            div.className="search-ind"
+
+                            div.textContent = news.name;
+                            div.addEventListener("click", function() {
+                                window.location.href = "new1.php?id=" + news.id;
+                            });
+
+                            results.appendChild(div);
+
+                        });
+                        search.parentElement.appendChild(results);
+                    });
+                </script>
                 <nav class="second">
                     <a href="<?php echo $material[0]["hrl"]; ?>">Link 1</a>
                     <a href="<?php echo $material[0]["hrl"]; ?>">Link 2</a>
@@ -54,23 +89,24 @@
                         </div>
                         <?php
                             $newnews=$_POST["category"];
-                            $json = file_get_contents($newnews);
-                            $news = json_decode($json, true);
+                            $news = $db->prepare("SELECT * FROM news WHERE category=?");
+                            $news->execute([$newnews]);
+                            $news = $news->fetchAll();
                         ?>
                         <div class="new">
-                            <h2><?php echo $news[0]["title"]; ?></h2>
+                            <h2><?php echo $news[0]["name"]; ?></h2>
                             <p><?php echo $news[0]["content"]; ?></p>
-                            <img src="img/<?php echo $news[0]["imgurl"]; ?>">
+                            <img src="img/<?php echo $news[0]["image"]; ?>">
                         </div>
                         <div class="new">
-                            <h2><?php echo $news[1]["title"]; ?></h2>
+                            <h2><?php echo $news[1]["name"]; ?></h2>
                             <p><?php echo $news[1]["content"]; ?></p>
-                            <img src="img/<?php echo $news[1]["imgurl"]; ?>">
+                            <img src="img/<?php echo $news[1]["image"]; ?>">
                         </div>
                         <div class="new">
-                            <h2><?php echo $news[2]["title"]; ?></h2>
+                            <h2><?php echo $news[2]["name"]; ?></h2>
                             <p><?php echo $news[2]["content"]; ?></p>
-                            <img src="img/<?php echo $news[2]["imgurl"]; ?>">
+                            <img src="img/<?php echo $news[2]["image"]; ?>">
                         </div>
                     </div>
                 </div>

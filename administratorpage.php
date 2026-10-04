@@ -19,8 +19,8 @@
                     <form action="lab1.php" method="post">
                         <label class="admin">Chose your favorite menu:</label>
                         <select name="category">
-                            <option value="news.json">Japonaise</option>
-                            <option value="newnews.json">Colombian and traditional</option>
+                            <option value="japonaise">Japonaise</option>
+                            <option value="colombian">Colombian and traditional</option>
                         </select>
                         <button type="submit">Submit</button>
                     </form>

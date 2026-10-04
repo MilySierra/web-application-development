@@ -2,10 +2,29 @@
     <html>
         <?php
             session_start();
+            require "db.php";
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                $_SESSION["loggedIn"] = true;
-                header("Location: administratorpage.php");
-                exit;
+                
+                $username = $_POST["user"];
+                $password = $_POST["password"];
+
+                $stmt = $db->prepare("SELECT * FROM users WHERE user = ?");
+                $stmt->execute([$username]);
+                $user = $stmt->fetch();
+
+                if($user){
+                    if ($password==$user["password"]){
+                        $_SESSION["loggedIn"] = true;
+                        header("Location: administratorpage.php");
+                        exit;
+                    } else {
+                        echo "Password incorrect";
+                    }
+                } else {
+                    $_SESSION["loggedIn"] = false;
+                    echo "User doesn't exist";
+                }
+                
             }
         ?>
         <head>
